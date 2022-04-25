@@ -6,7 +6,7 @@
     - text: "Home"
       href: index.html
     - text: "Leaflet Assignment"
-      href: Leaflet-Project.html
+      href: Leaflet_Project.html
   output:
     html_document:
       theme: cosmo

@@ -4,9 +4,9 @@
     title: "Leaflet"
     left:
     - text: "Home"
-        href: index.html
+      href: index.html
     - text: "Leaflet Assignment"
-        href: Leaflet_Project.html
+      href: Leaflet-Project.html
   output:
     html_document:
       theme: cosmo

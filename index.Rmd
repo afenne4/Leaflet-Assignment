@@ -8,3 +8,6 @@ output: html_document
 
 ## INDEX
 
+```{r}
+head(mtcars)
+```

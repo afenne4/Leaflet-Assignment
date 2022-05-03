@@ -1,12 +1,8 @@
 ---
-title: "index"
+title: "Navigation"
 author: "Alex Fennell"
 output: html_document
 ---
 
 
-## INDEX
-
-```{r}
-head(mtcars)
-```
+[Click here for Leaflet Assignment](https://afenne4.github.io/Leaflet-Assignment/Leaflet_Project.html)

@@ -3,7 +3,7 @@
   navbar:
     title: "Leaflet"
     left:
-    - text: "Home"
+    - text: "Navigation"
       href: index.html
     - text: "Leaflet Assignment"
       href: Leaflet_Project.html

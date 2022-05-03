@@ -7,7 +7,32 @@ output: html_document
 
 ```{r libraries,message=FALSE,warning=FALSE}
 library(leaflet)
+library(rgeos)
+library(rworldmap)
+library(tidyverse)
+library(stringdist)
 ```
+## Read in data
+```{r data read in}
+hapdat<-read.csv("world-happiness-report-2021.csv")
+wmap<-getMap(resolution='low')
+cent<-gCentroid(wmap,byid=TRUE)
+locations<-data.frame(cent)
+locations$Country<-rownames(locations)
+colnames(locations)<-c("lat","lon","Country")
+```
+
+```{r}
+locations<-locations[-233,]
+loc<-locations[amatch(hapdat$ï..Country.name,locations$Country,method='jw',maxDist=15),]
+dat<-merge(loc2,hapdat,by.x="Country",by.y="ï..Country.name",all=TRUE)
+dat[150,c(2,3)]<-dat[151,c(2,3)]
+dat[137,c(2,3)]<-dat[136,c(2,3)]
+dat[55,c(2,3)]<-dat[54,c(2,3)]
+dat2<-na.omit(dat)
+```
+
+
 
 ## Leaflet Plots
 

@@ -1,19 +1,20 @@
 ---
 title: "Leaflet Project"
 author: "Alex Fennell"
-date: "4/24/2022"
+date: "5/3/2022"
 output: html_document
 ---
 
-```{r libraries,message=FALSE,warning=FALSE}
+```{r libraries,message=FALSE,warning=FALSE,echo=FALSE}
 library(leaflet)
 library(rgeos)
 library(rworldmap)
 library(tidyverse)
 library(stringdist)
 ```
-## Read in data
-```{r data read in}
+
+
+```{r data read in,echo=FALSE}
     hapdat<-read.csv("world-happiness-report-2021.csv")
     wmap<-getMap(resolution='low')
     cent<-gCentroid(wmap,byid=TRUE)
@@ -22,7 +23,7 @@ library(stringdist)
     colnames(locations)<-c("longitude","latitude","Country")
 ```
 
-```{r}
+```{r Location data and marker setup,echo=FALSE}
 locations<-locations[-233,]
 loc<-locations[amatch(hapdat$ï..Country.name,locations$Country,method='jw',maxDist=15),]
 dat<-merge(loc,hapdat,by.x="Country",by.y="ï..Country.name",all=TRUE)
@@ -41,14 +42,18 @@ mapdata$markers <- paste0("Country: ",mapdata$Country, "<br>",
 
 
 
-## Leaflet Plots
+## World Happiness and Life Expectancy
+
+This map displays information about happiness within a country in addition to its 
+life expectancy. Happiness is on a scale from 1-8 with 8 being the happiest. The
+dataset was gathered from Kaggle and is updated yearly by government organizations.
 
 
-```{r pressure, echo=FALSE}
+```{r pressure, warning=FALSE,message=FALSE,echo=FALSE}
 leafmap<-mapdata%>%
     leaflet()%>%
     addTiles()%>%
-    addMarkers(popup = markers)
+    addMarkers(popup = markers,clusterOptions = markerClusterOptions())
 leafmap
 ```
 

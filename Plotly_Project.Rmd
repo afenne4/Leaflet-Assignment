@@ -27,11 +27,22 @@ time period.
 
 ## Read in the dataset
 
-```{r cars, echo = TRUE}
+```{r happydata, echo = TRUE}
 data<-read.csv("world-happiness-report.csv")
-
+colnames(data)[1]<-"Country"
+data<-na.omit(data)
 ```
 
+```{r happiest countries}
+happycountry<-data%>%
+    group_by(Country)%>%
+    summarise(avghappy=mean(Life.Ladder))%>%
+    arrange(desc(avghappy))
+happiest<-happycountry[1:10,]
+happiest
+happydat<-data[data$Country%in%happiest$Country,]
+happydat
+```
 ## Slide with Plot
 
 ```{r pressure}

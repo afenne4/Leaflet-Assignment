@@ -38,14 +38,14 @@ happycountry<-data%>%
     group_by(Country)%>%
     summarise(avghappy=mean(Life.Ladder))%>%
     arrange(desc(avghappy))
-happiest<-happycountry[1:10,]
-happiest
+happiest<-happycountry[1:5,]
 happydat<-data[data$Country%in%happiest$Country,]
 happydat
 ```
 ## Slide with Plot
 
 ```{r pressure}
-plot(pressure)
+happydat%>%plot_ly(y=~Life.Ladder,x=~year,color=~Country)%>%
+    add_lines()
 ```
 

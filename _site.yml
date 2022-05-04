@@ -7,6 +7,8 @@
       href: index.html
     - text: "Leaflet Assignment"
       href: Leaflet_Project.html
+    - text: "Plotly_Assignment"
+      href: Plotly_Project.html
   output:
     html_document:
       theme: cosmo

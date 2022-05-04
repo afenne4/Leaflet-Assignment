@@ -33,8 +33,6 @@ dat[55,c(2,3)]<-dat[54,c(2,3)]
 dat2<-na.omit(dat)
 mapdata<-dat2[,c(1,2,3,5,9,11)]
 mapdata$markers <- paste0("Country: ",mapdata$Country, "<br>",
-                  "Longitude: ",mapdata$longitude,"<br>",
-                  "Latitude: ",mapdata$latitude,"<br>",
                   "Happiness: ",mapdata$Ladder.score,"<br>",
                   "Life Expectancy: ",mapdata$Healthy.life.expectancy)
 
@@ -45,15 +43,15 @@ mapdata$markers <- paste0("Country: ",mapdata$Country, "<br>",
 ## World Happiness and Life Expectancy
 
 This map displays information about happiness within a country in addition to its 
-life expectancy. Happiness is on a scale from 1-8 with 8 being the happiest. The
-dataset was gathered from Kaggle and is updated yearly by government organizations.
+average life expectancy in the year 2021. Happiness is on a scale from 1-8 with 
+8 being the happiest. The dataset was gathered from Kaggle and is updated yearly 
+by government organizations.
 
-
-```{r pressure, warning=FALSE,message=FALSE,echo=FALSE}
+```{r Leaflet map, warning=FALSE,message=FALSE,echo=FALSE}
 leafmap<-mapdata%>%
     leaflet()%>%
     addTiles()%>%
-    addMarkers(popup = markers,clusterOptions = markerClusterOptions())
+    addMarkers(popup = mapdata$markers,clusterOptions = markerClusterOptions())
 leafmap
 ```
 

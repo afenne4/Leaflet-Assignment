@@ -7,7 +7,7 @@
       href: index.html
     - text: "Leaflet Assignment"
       href: Leaflet_Project.html
-    - text: "Plotly_Assignment"
+    - text: "Plotly_Presentation"
       href: Plotly_Project.html
   output:
     html_document:

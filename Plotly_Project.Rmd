@@ -42,9 +42,8 @@ happiest<-happycountry[1:5,]
 happydat<-data[data$Country%in%happiest$Country,]
 happydat
 ```
-## Slide with Plot
-
-```{r pressure}
+## Happiness across the years
+```{r pressure, echo=FALSE}
 happydat%>%plot_ly(y=~Life.Ladder,x=~year,color=~Country)%>%
     add_lines()
 ```

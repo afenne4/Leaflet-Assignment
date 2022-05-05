@@ -1,7 +1,7 @@
 ---
 title: "Happiest Countries in the World"
 author: "Press page down/up to navigate slides"
-date: "5/4/2022"
+date: "5/5/2022"
 output: ioslides_presentation
 ---
 ```{r libraries,echo=FALSE,message=FALSE,warning=FALSE}
@@ -25,26 +25,29 @@ time period.
 - GDP per Capita: Provides an index of the economic output of a nation per person
 - Healthy life Expectancy at Birth: Expected life expectancy for a given year
 
-## Read in the dataset
+## Read in and prepare the dataset
 
 ```{r happydata, echo = TRUE}
 data<-read.csv("world-happiness-report.csv")
-colnames(data)[1]<-"Country"
+colnames(data)[1:3]<-c("Country","Year","Happiness")
 data<-na.omit(data)
 ```
+
+Selecting the 5 happiest countries on average
 
 ```{r happiest countries}
 happycountry<-data%>%
     group_by(Country)%>%
-    summarise(avghappy=mean(Life.Ladder))%>%
+    summarise(avghappy=mean(Happiness))%>%
     arrange(desc(avghappy))
 happiest<-happycountry[1:5,]
 happydat<-data[data$Country%in%happiest$Country,]
-happydat
 ```
-## Happiness across the years
+
+## Happiness in 5 Happiest Countries from 2006-2020
 ```{r pressure, echo=FALSE}
-happydat%>%plot_ly(y=~Life.Ladder,x=~year,color=~Country)%>%
-    add_lines()
+happlot<-ggplot(happydat,aes(x=Year,y=Happiness,color=Country))+
+    geom_line()
+ggplotly(happlot)
 ```
 

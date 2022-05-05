@@ -19,12 +19,6 @@ GDP per capita, and a number of other predictors.
 I will be focused on how happiness changes in the happiest countries over a certain
 time period.
 
-## Variables of Interest in the Dataset
-
-- Life Ladder: A measure of percieved happiness with possible scores ranging from 1-8
-- GDP per Capita: Provides an index of the economic output of a nation per person
-- Healthy life Expectancy at Birth: Expected life expectancy for a given year
-
 ## Read in and prepare the dataset
 
 ```{r happydata, echo = TRUE}
